@@ -13,7 +13,7 @@ const UserViewWrapper = () => {
     const context = useContext(ListContext);
     const params = useParams();
 
-    const useFetch = async () => {
+    const fetchData = async () => {
         try{
             const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${user_id}`);
             setUser(response.data);
@@ -33,7 +33,7 @@ const UserViewWrapper = () => {
             setIsLoaded(true);
         }
         else if(user_id !== '') {
-            useFetch();
+            fetchData();
         }
         else {
             setUser(null);

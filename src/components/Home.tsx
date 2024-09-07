@@ -16,11 +16,11 @@ const Home = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        const useFetch = async () => {
+        const fetchData = async () => {
             const response = await axios.get('https://jsonplaceholder.typicode.com/users');
             setUsers(response.data);
         }
-        useFetch();
+        fetchData();
     }, []);
 
     return (
