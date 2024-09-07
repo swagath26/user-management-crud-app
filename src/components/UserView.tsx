@@ -1,6 +1,10 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useContext, useEffect, useRef, useState } from "react"
 import initMap from "src/utils/initMap"
 import './UserView.css'
+import handleEdit from "src/utils/handleEdit"
+import { ListContext } from "src/context/listContext"
+import { useNavigate } from "react-router-dom"
+import handleDelete from "src/utils/handleDelete"
 
 type Geo = {
     lat: string
@@ -37,7 +41,10 @@ interface UserViewProps {
 }
 
 const UserView:React.FC<UserViewProps> = ({userProp}) => {
+    const context = useContext(ListContext);
     const [user, setUser] = useState<User | null>(userProp);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         setUser(userProp);
@@ -61,15 +68,37 @@ const UserView:React.FC<UserViewProps> = ({userProp}) => {
         }
     }, [user]);
 
+    const handleDel = async (id: number) => {
+        const response = await handleDelete(id);
+        if(response.success) {
+            navigate('/deleted');
+        }
+    }
+
     return (
         <div className='h-full p-4 flex justify-center w-full'>
                 <div className='p-8 rounded-lg shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)] w-full md:w-3/4 lg:w-full xl:w-3/4'>
                 {user? (
-                    <ul className='flex flex-col items-center gap-2 w-full h-full'>
+                    <ul className='flex flex-col gap-2 w-full h-full'>
 
-                        <h1 className='font-bold text-2xl text-slate-900 md:text-3xl py-8 lg:py-12'> 
-                            {user.name} 
-                        </h1>
+                        <div className="flex items-center gap-2 lg:gap-4">
+                            <h1 className='flex-grow text-center font-bold text-2xl text-slate-900 md:text-3xl py-8 lg:py-12'> 
+                                {user.name} 
+                            </h1>
+
+                            {user.id !== 11 ?
+                            <>
+                                <i className='lg:px-3 py-2 rounded-lg px-2 cursor-pointer text-xl hover:bg-slate-900 hover:text-white fas fa-pen-to-square'
+                                    onClick={() => {if(context) handleEdit(user, context.setEditData); }}>
+                                </i>
+                                <i className='lg:px-3 py-2 rounded-lg px-2 cursor-pointer text-xl hover:bg-slate-900 hover:text-white fas fa-trash-can'
+                                    onClick={() => {handleDel(user.id)}}>
+                                </i>
+                            </>
+                            :
+                            <></>
+                            }
+                        </div>
                         
                         <div className="flex lg:flex-row flex-col justify-center gap-8 lg:gap-20 w-full h-full">
                             <div className="px-4">

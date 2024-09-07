@@ -10,6 +10,7 @@ const UserViewWrapper = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [user, setUser] = useState<User | null>(null);
     const [showSuccess, setShowSuccess] = useState(false);
+    const [showUpdated, setShowUpdated] = useState(false);
     const context = useContext(ListContext);
     const params = useParams();
 
@@ -27,9 +28,9 @@ const UserViewWrapper = () => {
     const user_id = params.id || '' ;
 
     useEffect(() => {
-        if(user_id === '11' && context?.data?.id === 11) {
+        if(context?.data?.id === parseFloat(user_id)) {
             setUser(context.data);
-            setShowSuccess(true);
+            user_id === '11' ? setShowSuccess(true) : setShowUpdated(true);
             setIsLoaded(true);
         }
         else if(user_id !== '') {
@@ -43,11 +44,11 @@ const UserViewWrapper = () => {
 
     return user || !isLoaded ? 
         <>
-            {showSuccess ? 
+            {showSuccess || showUpdated ? 
                 <div className="flex gap-4 pt-8 pb-20 flex-col items-center justify-center">
                     <img className='m-4 p-4' src={success} width='150' height='150' />
                     <h1 className='text-3xl font-medium text-slate-900'>Thank You</h1>
-                    <p className='text-slate-500 text-lg'>User info is successfully listed..</p>
+                    <p className='text-slate-500 text-lg'>User info is successfully {showSuccess ? 'listed' : 'updated'}..</p>
                 </div> :
                 <></>
             }

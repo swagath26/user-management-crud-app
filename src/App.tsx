@@ -8,6 +8,7 @@ import UserView from './components/UserView';
 import { ListContext, ListProvider } from './context/listContext';
 import UserViewWrapper from './components/UserViewWrapper';
 import ScrollOnNav from './components/ScrollOnNav';
+import Deleted from './components/Deleted';
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
               <Route path='/' element={<Home />}></Route>
               <Route path='/home' element={<Home />}></Route>
               <Route path='/list' element={<List />}></Route>
+              <Route path='/deleted' element={<Deleted />}></Route>
+              <Route path='/list/:id' element={<List />}></Route>
               <Route path='/user-view' element={<UserViewWrapper />}></Route>
               <Route path='/user-view/:id' element={<UserViewWrapper />}></Route>
             </Routes>

@@ -19,9 +19,9 @@ const SearchBox: React.FC<SearchBoxProps> = ({searchQuery, setSearchQuery, handl
     }, []);
 
     return (
-        <div className='flex'>
+        <div className='flex w-full'>
             <input
-                className='px-4 pt-2 pb-3 border-l border-t border-b border-solid rounded-l-lg border-neutral-300 focus-visible:outline-blue-800'
+                className='max-w-[75%] px-4 pt-2 pb-3 border-l border-t border-b border-solid rounded-l-lg border-neutral-300 focus-visible:outline-blue-800'
                 id="search-input"
                 value={searchQuery}
                 type="text"

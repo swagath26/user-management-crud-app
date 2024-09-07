@@ -5,7 +5,7 @@ import initMap from "../utils/initMap";
 import { FlatUserFormData } from "../types/Types";
 import geocode from "src/utils/geocode";
 import SearchBox from "./SellForm/UI/SearchBox";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import NumberWithUnitInputField from "./SellForm/UI/NumberWithUnitInputField";
 import './SellForm.css'
 import { ListContext } from "src/context/listContext";
@@ -13,6 +13,8 @@ import { ListContext } from "src/context/listContext";
 const List = () => {
 
     const navigate = useNavigate();
+    const params = useParams();
+    const user_id = params.id || '';
 
     const [isValidated, setIsValidated] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,17 +44,23 @@ const List = () => {
         ))
     };
 
+    useEffect(() => {
+        if(user_id && context) {
+            setFormData(context?.editData)
+        }
+    }, []);
+
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setIsValidated(true);
         const form = event.currentTarget;
         if (form.checkValidity()) {
             setIsSubmitting(true);
-            const response = await handleSubmitForm(formData);
+            const response = await handleSubmitForm(formData, user_id ? user_id : 'post');
             setIsSubmitting(false);
             if(response.success) {
                 context?.setData(response.data);
-                navigate('/user-view/11');
+                user_id ? navigate(`/user-view/${user_id}`) : navigate('/user-view/11');
             }
         }
         else {
@@ -107,7 +115,7 @@ const List = () => {
         <div className='flex justify-center p-8'>
             
             <div className='lg:px-8 lg:py-8 lg:shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]
-                2xl:w-2/3 xl:w-3/4 lg:w-4/5'>
+                2xl:w-2/3 xl:w-3/4 lg:w-4/5 w-full'>
                 
                 <form onSubmit={(event) => handleSubmit(event)}
                     className="flex flex-col h-full gap-5"
@@ -214,10 +222,10 @@ const List = () => {
                             isValidated={isValidated}
                         />
 
-                    <div className="relative">
+                    <div className="relative w-full">
 
-                        <div className='row search-row mx-12 d-flex p-2 align-items-center' style={{position: 'absolute', zIndex: 1000}}>
-                            <div className='p-0 py-2'>
+                        <div className='max-w-full pl-8 sm:ml-12 d-flex p-2 align-items-center' style={{position: 'absolute', zIndex: 1000}}>
+                            <div className='p-0 py-2 w-full relative'>
                                 <SearchBox
                                 searchQuery={searchQuery}
                                 setSearchQuery={setSearchQuery}
@@ -237,7 +245,7 @@ const List = () => {
                                 type="submit"
                                 disabled={isSubmitting}
                             >
-                                {isSubmitting ? 'Please wait' : 'Submit'}
+                                {isSubmitting ? 'Please wait' : user_id ? 'Update' : 'Submit'}
                             </button>
                         </div>
                     </div>

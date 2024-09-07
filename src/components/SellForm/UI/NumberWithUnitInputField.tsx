@@ -41,7 +41,7 @@ const NumberWithUnitInputField: React.FC<NumberWithUnitInputFieldProps> = ({ lab
                     {unit}
                 </span>
                 <input
-                    className={`px-4 pt-2 pb-3 border border-solid rounded-tr-lg rounded-br-lg
+                    className={`px-4 pt-2 pb-3 border border-solid rounded-tr-lg rounded-br-lg max-w-[75%]
                         ${isValidated && !isFieldValueValid(fieldValue) ? 
                             `border-red-600 focus-visible:outline-red-600` 
                             : `border-neutral-300 focus-visible:outline-blue-800`}

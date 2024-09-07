@@ -1,38 +1,11 @@
 import axios from "axios";
-import { FlatUserFormData, User } from "../types/Types";
 
-const handleSubmitForm = async (formData: FlatUserFormData, submitType: string) => {
-    const data: User = {
-        address: {
-          city: formData.address_city,
-          street: formData.address_street,
-          suite: formData.address_suite,
-          zipcode: formData.address_zipcode,
-          geo: {
-            lat: formData.address_geo_lat,
-            lng: formData.address_geo_lng
-          }
-        },
-        company: {
-          bs: formData.company_bs,
-          catchPhrase: formData.company_catchPhrase,
-          name: formData.company_name
-        },
-        email: formData.email,
-        id: submitType === 'post' ? 11 : parseFloat(submitType),
-        name: formData.name,
-        phone: formData.phone,
-        username: formData.username,
-        website: formData.website
-    };
+const handleDelete = async (id: number) => {
     try { 
-        const response = 
-            submitType === 'post' ? 
-                await axios.post('https://jsonplaceholder.typicode.com/users/', data) :
-                await axios.put(`https://jsonplaceholder.typicode.com/users/${data.id}`, data);
+        const response = await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
         console.log(response);
 
-        if(response.status=== (submitType === 'post' ? 201 : 200)) {
+        if(response.status === 200) {
             return {
                 success: true,
                 data: response.data
@@ -71,6 +44,6 @@ const handleSubmitForm = async (formData: FlatUserFormData, submitType: string) 
             success: false
         }
     }
-};
+}
 
-export default handleSubmitForm;
+export default handleDelete;

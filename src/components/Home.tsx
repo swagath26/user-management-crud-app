@@ -60,7 +60,7 @@ const Home = () => {
                         </div>
                         :
                         Array.from(Array(10).keys()).map((val: number, index) => (
-                            <li className='p-8 w-[28em] rounded-lg shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]'>
+                            <li key={index} className='p-8 w-[28em] rounded-lg shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]'>
                                 <div className='ph-item'>
                                     <div className='ph-col-12 h-full'>
                                         <div className="ph-row">
