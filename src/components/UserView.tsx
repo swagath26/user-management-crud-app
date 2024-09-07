@@ -89,7 +89,7 @@ const UserView:React.FC<UserViewProps> = ({userProp}) => {
                             {user.id !== 11 ?
                             <>
                                 <i className='lg:px-3 py-2 rounded-lg px-2 cursor-pointer text-xl hover:bg-slate-900 hover:text-white fas fa-pen-to-square'
-                                    onClick={() => {if(context) handleEdit(user, context.setEditData); }}>
+                                    onClick={() => {if(context) handleEdit(user, context.setEditData); navigate(`/list/${user.id}`)}}>
                                 </i>
                                 <i className='lg:px-3 py-2 rounded-lg px-2 cursor-pointer text-xl hover:bg-slate-900 hover:text-white fas fa-trash-can'
                                     onClick={() => {handleDel(user.id)}}>
