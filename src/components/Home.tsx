@@ -35,23 +35,24 @@ const Home = () => {
             <ul className='md:px-12 px-4 py-4 flex justify-evenly flex-wrap gap-8'>
                 {users.length !== 0 && isLoaded ?
                     users.map((user : User, index) => (
-                        <li key={index} className='p-8 md:w-[28em] w-[18em] rounded-lg active:bg-neutral-100 hover:shadow-[0px_0px_5px_2px_rgba(0,0,0,0.2)] hover:scale-[1.02] transition-transform transition-200 shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]'>
-                                <Link to={`/user-view/${user.id}`}>
-                                    <ul className='flex flex-col gap-2'>
-                                        <li className='font-bold text-2xl text-slate-900 md:text-3xl py-2'> 
-                                            {user.name}
-                                        </li>
-                                        <li className='sm:text-lg md:text-xl'> 
-                                            <i className='fas fa-envelope pr-2'></i>
-                                            {user.email} 
-                                        </li>
-                                        <li className='sm:text-lg md:text-xl'> 
-                                            <i className='fas fa-phone pr-2'></i>
-                                            {user.phone} 
-                                        </li>
-                                    </ul>
-                                </Link>
-                        </li>
+                        <Link to={`/user-view/${user.id}`}>
+                            <li key={index} className='p-8 md:w-[28em] w-[18em] rounded-lg active:bg-neutral-100 hover:shadow-[0px_0px_5px_2px_rgba(0,0,0,0.2)] hover:scale-[1.02] transition-transform transition-200 shadow-[0px_0px_5px_2px_rgba(0,0,0,0.1)]'>
+                                
+                                <ul className='flex flex-col gap-2'>
+                                    <li className='font-bold text-2xl text-slate-900 md:text-3xl py-2'> 
+                                        {user.name}
+                                    </li>
+                                    <li className='sm:text-lg md:text-xl'> 
+                                        <i className='fas fa-envelope pr-2'></i>
+                                        {user.email} 
+                                    </li>
+                                    <li className='sm:text-lg md:text-xl'> 
+                                        <i className='fas fa-phone pr-2'></i>
+                                        {user.phone} 
+                                    </li>
+                                </ul>
+                            </li>
+                        </Link>
                     ))
                     :
                     users.length === 0 && isLoaded ? 

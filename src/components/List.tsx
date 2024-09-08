@@ -122,11 +122,14 @@ const List = () => {
                     noValidate
                 >
 
+                        <h2 className='font-bold text-xl text-slate-900 md:text-2xl py-3'>
+                            Basic info
+                        </h2>
                         <TextInputField 
                             autoFocus={true}
                             label='Name'
                             field='name'
-                            placeholder='e.g. Arjun Murali'
+                            placeholder='e.g. Swagath N S'
                             formData={formData}
                             updateFormData={updateFormData}
                             isValidated={isValidated}
@@ -134,7 +137,7 @@ const List = () => {
                         <TextInputField 
                             label='Username'
                             field='username'
-                            placeholder='e.g. arjun666'
+                            placeholder='e.g. swagath26'
                             formData={formData}
                             updateFormData={updateFormData}
                             isValidated={isValidated}
@@ -142,7 +145,7 @@ const List = () => {
                         <TextInputField 
                             label='Website'
                             field='website'
-                            placeholder='e.g. arjunmura.com'
+                            placeholder='e.g. swagathns.net'
                             formData={formData}
                             updateFormData={updateFormData}
                             isValidated={isValidated}
@@ -150,7 +153,7 @@ const List = () => {
                         <TextInputField 
                             label='Email'
                             field='email'
-                            placeholder='e.g. arjunmura@gmail.com'
+                            placeholder='e.g. swagathns2000@gmail.com'
                             formData={formData}
                             updateFormData={updateFormData}
                             isValidated={isValidated}
@@ -158,13 +161,16 @@ const List = () => {
                         <NumberWithUnitInputField 
                             label='Phone'
                             field='phone'
-                            placeholder='e.g. 7025408327'
+                            placeholder='e.g. 7025470254'
                             unit="IN"
                             required={true}
                             formData={formData}
                             updateFormData={updateFormData}
                             isValidated={isValidated}
                         />
+                        <h2 className='font-bold text-xl text-slate-900 md:text-2xl py-3'>
+                            Address & Location
+                        </h2>
                         <TextInputField
                             label='City'
                             field='address_city'
@@ -176,7 +182,7 @@ const List = () => {
                         <TextInputField 
                             label='Street'
                             field='address_street'
-                            placeholder='e.g. Ethai Center'
+                            placeholder='e.g. Ethai Beach Road'
                             formData={formData}
                             updateFormData={updateFormData}
                             isValidated={isValidated}
@@ -184,7 +190,7 @@ const List = () => {
                         <TextInputField 
                             label='Suite'
                             field='address_suite'
-                            placeholder='e.g. prr'
+                            placeholder='e.g. Suite 879, Skyline Plains'
                             formData={formData}
                             updateFormData={updateFormData}
                             isValidated={isValidated}
@@ -197,30 +203,37 @@ const List = () => {
                             updateFormData={updateFormData}
                             isValidated={isValidated}
                         />
-                        <TextInputField 
-                            label='Company BS'
-                            field='company_bs'
-                            placeholder='e.g. pr'
-                            formData={formData}
-                            updateFormData={updateFormData}
-                            isValidated={isValidated}
-                        />
+                        <h2 className='font-bold text-xl text-slate-900 md:text-2xl py-3'>
+                            Company Info
+                        </h2>
                         <TextInputField 
                             label='Company Name'
                             field='company_name'
-                            placeholder='e.g. Mugen'
+                            placeholder='e.g. Deckow-Crist'
                             formData={formData}
                             updateFormData={updateFormData}
                             isValidated={isValidated}
                         />
                         <TextInputField 
-                            label='Company Catch Phrase'
-                            field='company_catchPhrase'
-                            placeholder='e.g. Crafting'
+                            label='BS'
+                            field='company_bs'
+                            placeholder='e.g. Synergize scalable supply-chains'
                             formData={formData}
                             updateFormData={updateFormData}
                             isValidated={isValidated}
                         />
+                        <TextInputField 
+                            label='Catch Phrase'
+                            field='company_catchPhrase'
+                            placeholder='e.g. Proactive didactic contingency'
+                            formData={formData}
+                            updateFormData={updateFormData}
+                            isValidated={isValidated}
+                        />
+
+                    <h2 className='font-bold text-xl text-slate-900 md:text-2xl py-3'>
+                        Please mark your exact location
+                    </h2>
 
                     <div className="relative w-full">
 
