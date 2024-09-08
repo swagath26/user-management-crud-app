@@ -5,7 +5,7 @@ const Navbar = () => {
         <nav className="h-full">
           <ul className="flex gap-16 justify-evenly items-center h-full">
             <li className="font-medium"><Link to='/home'>Home</Link></li>
-            <li className="font-medium"><Link to='/list'>List</Link></li>
+            <li className="font-medium"><Link to='/list'>Add User</Link></li>
           </ul>
         </nav>
     )
